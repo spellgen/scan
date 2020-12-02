@@ -46,6 +46,10 @@ func TestScanner1(t *testing.T) {
 	} else {
 		for k, d := range data {
 			t.Logf("k=%d, d=%#v, type=%T", k, d, d)
+			switch d.(type) {
+			case emptyLine:
+				t.Logf("^ hey that was an empty line")
+			}
 		}
 	}
 }

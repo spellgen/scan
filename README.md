@@ -15,4 +15,4 @@ The format of a particular type of line is defined by an object that implements 
     
 If the supplied line can be satisfactorily parsed a copy of it is returned.
 
-See the test function for how to use.
+See the test function for how to use. Try `go test -v`
