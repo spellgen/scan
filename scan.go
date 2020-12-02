@@ -26,11 +26,10 @@ func ReadAll(r io.Reader, scanners ...LineScanner) ([]LineScanner, error) {
 				break
 			}
 		}
-		if len(ret)!=line {
+		if len(ret) != line {
 			return nil, fmt.Errorf("no match for supplied scanners on line %d", line)
 		}
 	}
 
 	return ret, nil
 }
-
