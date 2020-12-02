@@ -8,9 +8,10 @@ import (
 
 // LineScanner parses a line (string) and returns a copy of the result along with an ok/no good signal
 type LineScanner interface {
-	parse(string) (LineScanner, bool)
+	Parse(string) (LineScanner, bool)
 }
 
+// ReadAll reads all lines provided by 'r' and attempts to parse each line with the passed 'scanners'
 func ReadAll(r io.Reader, scanners ...LineScanner) ([]LineScanner, error) {
 	s := bufio.NewScanner(r)
 	ret := make([]LineScanner, 0)
@@ -19,7 +20,7 @@ func ReadAll(r io.Reader, scanners ...LineScanner) ([]LineScanner, error) {
 		line++
 		for _, sr := range scanners {
 			txt := s.Text()
-			obj, ok := sr.parse(txt)
+			obj, ok := sr.Parse(txt)
 			if ok {
 				ret = append(ret, obj)
 				break
